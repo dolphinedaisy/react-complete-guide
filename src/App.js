@@ -7,8 +7,19 @@ function App() {
     return (
         <div className="App">
             <h1>Hi, I am REACT App</h1>
+            <p>This is actually working !!</p>
         </div>
     );
+
+    // return (
+    //     <div className="App">
+    //         <h1>Hi, I am REACT App</h1>
+    //     </div>
+    //     <h1>Hello, this is not possible</h1>
+    // );
+    // JSX expression must have one root element
+    // with JSX you can not return adjacent elements. There must be one and only one root element should be returned
+
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work ?'));
 }
 
