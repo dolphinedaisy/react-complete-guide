@@ -1,5 +1,10 @@
 import React from 'react';
 import './App.css';
+// word after import can be anything, but best practice is using component name starting with capital character
+// any tag starts with lowercase is used for built in tags like <div>, <h1>
+// so custom component tag start with capital letter is best practice
+// and can be easily differentiated
+import Person from "./Person/Person";
 
 function App() {
     // this is jsx or js not HTML, behind the scenes it will compile into line written below in the comment
@@ -8,6 +13,7 @@ function App() {
         <div className="App">
             <h1>Hi, I am REACT App</h1>
             <p>This is actually working !!</p>
+            <Person></Person>
         </div>
     );
 
