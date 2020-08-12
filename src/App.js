@@ -13,7 +13,9 @@ function App() {
         <div className="App">
             <h1>Hi, I am REACT App</h1>
             <p>This is actually working !!</p>
-            <Person></Person>
+            <Person name="Dhwani" age="26" ></Person>
+            <Person name="Sangana" age="27" ></Person>
+            <Person name="Abhi" age="28" ></Person>
         </div>
     );
 
