@@ -6,7 +6,7 @@ const person = (props) => {
     // return <p>I am a person. I am 2020 - 1994 years old</p>
     return (
         <div>
-            <p>My name is <b>{ props.name }</b>  and I am <b> { props.age } </b> years old</p>
+            <p onClick={ props.clickLabel }>My name is <b>{ props.name }</b>  and I am <b> { props.age } </b> years old</p>
             <p>My hobbies are {props.children ? props.children : 'Nothing'}</p>
         </div>
     )
