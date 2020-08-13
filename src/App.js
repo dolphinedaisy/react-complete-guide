@@ -64,13 +64,22 @@ class App extends Component {
     }
 
     render() {
+
+        // whatever style written here inside is scoped to the component, it is NOT GLOBAL.
+        // restriction are there, like you can not add :hover lie pseudo class
+        const btnStyleGreen = {
+            'color': '#fff',
+            'background-color': '#28a745',
+            'border-color': '#28a745',
+        }
+
         return (
             <div className="App">
                 <h1>Hi, I am REACT App</h1>
                 <p>This is actually working !!</p>
                 {/*<button className="btn btn-primary mb-3" onClick={ this.switchNameHandler.bind(this, 'Dhwani Joshi', 27)}>Switch Names</button>*/}
                 {/*do not use following onClick way to write click event, react can render certain thins, too often so this can be inefficient way*/}
-                <button className="btn btn-primary mb-3" onClick={() => this.switchNameHandler('Dhwani Joshi', 27)}>Switch Names</button>
+                <button style={ btnStyleGreen } className="btn mb-3" onClick={() => this.switchNameHandler('Dhwani Joshi', 27)}>Switch Names</button>
                 {/*this adding round bracket will call the function immediately, so do not use round bracket, just assign the handler*/}
                 {/*<button className="btn btn-primary" onClick={this.switchNameHandler()}>Switch Names</button>*/}
                 <Person clickLabel={ this.switchNameHandler.bind(this, 'Aparna', 19) }
