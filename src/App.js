@@ -36,6 +36,28 @@ class App extends Component {
         this.setState({persons: persons});
     }
 
+    nameChangedHandler = (event, id) => {
+        debugger
+        const personIndex = this.state.persons.findIndex((p) => {
+            return p.id === id;
+        });
+
+
+        // this will return just pointer to actual object
+        // so, in this case we gonna change the person state object directly
+        // make sure not to use this ever
+        // const person = this.state.persons[personIndex];
+        // ALWAYS USE SPREAD OPERATOR OT SPLICE FOR FOR ARRAY
+        const person = {...this.state.persons[personIndex]};
+        person.name = event.target.value;
+
+        const persons = [...this.state.persons];
+        persons[personIndex] = person;
+
+        this.setState({persons: persons});
+
+    }
+
     render() {
 
         let persons = null;
@@ -46,7 +68,8 @@ class App extends Component {
                     {
                         this.state.persons.map((person, index) => {
                             return <Person key={person.id}
-                                           click={this.deletePersonHandler.bind(this, index)}
+                                           click={this.deletePersonHandler.bind(this, person.id)}
+                                           changed={(event) => this.nameChangedHandler(event, person.id)}
                                            name={person.name}
                                            age={person.age}/>
                         })

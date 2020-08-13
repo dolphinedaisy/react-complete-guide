@@ -5,7 +5,8 @@ const person = (props) => {
     // single braces says that this part should be executed as javascript and not as normal text.
     // return <p>I am a person. I am 2020 - 1994 years old</p>
     return (
-        <div className={'Person mb-2'} onClick={ props.click }>
+        <div className={'Person mb-2'}>
+            <button onClick={ props.click } className={'btn btn-danger'}>Delete</button>
             <p>My name is <b>{ props.name }</b>  and I am <b> { props.age } </b> years old</p>
             <p>My hobbies are { props.children ? props.children : 'Nothing' }</p>
             <input type="text" onChange={props.changed} value={ props.name }/>
