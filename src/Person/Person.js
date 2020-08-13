@@ -8,6 +8,8 @@ const person = (props) => {
         <div>
             <p onClick={ props.clickLabel }>My name is <b>{ props.name }</b>  and I am <b> { props.age } </b> years old</p>
             <p>My hobbies are {props.children ? props.children : 'Nothing'}</p>
+            <input type="text" onChange={props.changed} value={ props.name }/>
+            <p>-----------------------------------------------------------------------------------</p>
         </div>
     )
 };
