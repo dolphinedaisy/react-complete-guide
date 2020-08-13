@@ -23,6 +23,7 @@ class App extends Component {
                 age: 24
             }
         ],
+        showPersons: false,
     }
 
     switchNameHandler = (newName, newAge) => {
@@ -63,6 +64,11 @@ class App extends Component {
         });
     }
 
+    togglePersonListHandler = () => {
+        // const fuckYou = this.state.showPersons;
+        this.setState({ showPersons: !(this.state.showPersons) });
+    }
+
     render() {
 
         // whatever style written here inside is scoped to the component, it is NOT GLOBAL.
@@ -77,18 +83,23 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I am REACT App</h1>
                 <p>This is actually working !!</p>
-                {/*<button className="btn btn-primary mb-3" onClick={ this.switchNameHandler.bind(this, 'Dhwani Joshi', 27)}>Switch Names</button>*/}
-                {/*do not use following onClick way to write click event, react can render certain thins, too often so this can be inefficient way*/}
-                <button style={ btnStyleGreen } className="btn mb-3" onClick={() => this.switchNameHandler('Dhwani Joshi', 27)}>Switch Names</button>
-                {/*this adding round bracket will call the function immediately, so do not use round bracket, just assign the handler*/}
-                {/*<button className="btn btn-primary" onClick={this.switchNameHandler()}>Switch Names</button>*/}
-                <Person clickLabel={ this.switchNameHandler.bind(this, 'Aparna', 19) }
-                        name={ this.state.persons[0].name }
-                        age={ this.state.persons[0].age } ></Person>
-                <Person name={ this.state.persons[1].name } age={ this.state.persons[1].age } >Dancing and painting</Person>
-                <Person changed={ this.nameChangedHandler }
-                        name={ this.state.persons[2].name }
-                        age={ this.state.persons[2].age } ></Person>
+
+                <button style={ btnStyleGreen } className="btn mb-3"
+                        onClick={() => this.togglePersonListHandler()}>Toggle</button>
+
+                {
+                    this.state.showPersons ?
+                    <div>
+                        <Person clickLabel={this.switchNameHandler.bind(this, 'Aparna', 19)}
+                                name={this.state.persons[0].name}
+                                age={this.state.persons[0].age}></Person>
+                        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>Dancing and
+                            painting</Person>
+                        <Person changed={this.nameChangedHandler}
+                                name={this.state.persons[2].name}
+                                age={this.state.persons[2].age}></Person>
+                    </div> : null
+                }
             </div>
         );
     }
