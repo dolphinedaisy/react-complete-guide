@@ -8,6 +8,22 @@ import Person from "./Person/Person";
 
 class App extends Component {
 
+    updatedPerson = {
+        persons: [
+            {
+                name: 'Dhwani Joshi',
+                age: 29
+            },
+            {
+                name: 'Vaidehi',
+                age: 25
+            },
+            {
+                name: 'Saloni',
+                age: 20
+            }
+        ],
+    }
     state = {
         persons: [
             {
@@ -26,7 +42,11 @@ class App extends Component {
     }
 
     switchNameHandler = () => {
-        console.log('was cliked');
+        console.log('was clicked');
+        // DON'T DO THIS - this.state.persons[0].name = 'AVANTIKA';
+
+        // we did not define it, Component object has it so inherited when we extend it.
+        this.setState(this.updatedPerson);
     }
 
     render() {
