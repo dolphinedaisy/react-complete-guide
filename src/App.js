@@ -7,14 +7,17 @@ class App extends Component {
     state = {
         persons: [
             {
+                id: 'qw1',
                 name: 'Dhwani',
                 age: 29
             },
             {
+                id: 'vhj2',
                 name: 'Vaidehi',
                 age: 25
             },
             {
+                id: 'hjk0',
                 name: 'Saloni',
                 age: 24
             }
@@ -42,7 +45,7 @@ class App extends Component {
                 <div>
                     {
                         this.state.persons.map((person, index) => {
-                            return <Person key={index}
+                            return <Person key={person.id}
                                            click={this.deletePersonHandler.bind(this, index)}
                                            name={person.name}
                                            age={person.age}/>
