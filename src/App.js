@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 // word after import can be anything, but best practice is using component name starting with capital character
 // any tag starts with lowercase is used for built in tags like <div>, <h1>
@@ -6,29 +6,43 @@ import './App.css';
 // and can be easily differentiated
 import Person from "./Person/Person";
 
-function App() {
-    // this is jsx or js not HTML, behind the scenes it will compile into line written below in the comment
-    // see the className attr, in HTML we write just class not className
-    return (
-        <div className="App">
-            <h1>Hi, I am REACT App</h1>
-            <p>This is actually working !!</p>
-            <Person name="Dhwani" age="26" ></Person>
-            <Person name="Sangana" age="27" >Dancing and painting</Person>
-            <Person name="Abhi" age="28" ></Person>
-        </div>
-    );
+class App extends Component {
 
-    // return (
-    //     <div className="App">
-    //         <h1>Hi, I am REACT App</h1>
-    //     </div>
-    //     <h1>Hello, this is not possible</h1>
-    // );
-    // JSX expression must have one root element
-    // with JSX you can not return adjacent elements. There must be one and only one root element should be returned
+    state = {
+        persons: [
+            {
+                name: 'Dhwani',
+                age: 29
+            },
+            {
+                name: 'Vaidehi',
+                age: 25
+            },
+            {
+                name: 'Saloni',
+                age: 24
+            }
+        ],
+    }
 
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work ?'));
+    switchNameHandler = () => {
+        console.log('was cliked');
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <h1>Hi, I am REACT App</h1>
+                <p>This is actually working !!</p>
+                <button className="btn btn-primary mb-3" onClick={this.switchNameHandler}>Switch Names</button>
+                {/*this adding round bracket will call the function immediately, so do not use round bracket, just assign the handler*/}
+                {/*<button className="btn btn-primary" onClick={this.switchNameHandler()}>Switch Names</button>*/}
+                <Person name={ this.state.persons[0].name } age={ this.state.persons[0].age } ></Person>
+                <Person name={ this.state.persons[1].name } age={ this.state.persons[1].age } >Dancing and painting</Person>
+                <Person name={ this.state.persons[2].name } age={ this.state.persons[2].age } ></Person>
+            </div>
+        );
+    }
 }
 
 export default App;
