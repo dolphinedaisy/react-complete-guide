@@ -27,6 +27,12 @@ class App extends Component {
         this.setState({ showPersons: !(this.state.showPersons) });
     }
 
+    deletePersonHandler = (index) => {
+        const persons = [...this.state.persons];
+        persons.splice(index, 1);
+        this.setState({persons: persons});
+    }
+
     render() {
 
         let persons = null;
@@ -36,7 +42,10 @@ class App extends Component {
                 <div>
                     {
                         this.state.persons.map((person, index) => {
-                            return <Person key={index} name={person.name} age={person.age}></Person>
+                            return <Person key={index}
+                                           click={this.deletePersonHandler.bind(this, index)}
+                                           name={person.name}
+                                           age={person.age}/>
                         })
                     }
                 </div>
