@@ -5,13 +5,14 @@ const Cockpit = (props) => {
     useEffect(() => {
         console.log('Cockpit.js : useEffects');
         // Http Request ...
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             alert('Saved Data to Cloud');
-        }, 1000);
+        }, 2000);
 
         // this will work similar - componentWillUnmount
         // you can perform clean up here
         return () => {
+            clearTimeout(timer);
             console.log('Clean up of cockpit')
         };
 
