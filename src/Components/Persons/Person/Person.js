@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Person.css';
-// ES6 equivalent of normal function declaration
+import ReactAux from '../../hoc/ReactAux';
+
 class Person extends Component {
 
     componentWillUnmount() {
@@ -8,16 +9,27 @@ class Person extends Component {
     }
 
     render() {
-        console.log('Person.js render()')
-        // single braces says that this part should be executed as javascript and not as normal text.
-        // return <p>I am a person. I am 2020 - 1994 years old</p>
+        console.log('Person.js render()');
+
+        // alternative to return adjacent DOM elements
+        // option - 1
+        // return [
+        //     <button key={'btn-person-btn'} data-delete="qwerty" onClick={ this.props.click } className={'btn btn-danger'}>Delete</button>,
+        //     <p key={'p-name'}>My name is <b>{ this.props.name }</b>  and I am <b> { this.props.age } </b> years old</p>,
+        //     <p key={'p-hobby'}>My hobbies are { this.props.children ? this.props.children : 'Nothing' }</p>,
+        //     <input key={'input-name'} type="text" onChange={this.props.changed} value={ this.props.name }/>
+        // ];
+
+        // option - 2
         return (
-            <div className={'Person mb-2'}>
+            <ReactAux>
+                <hr/>
                 <button data-delete="qwerty" onClick={ this.props.click } className={'btn btn-danger'}>Delete</button>
                 <p>My name is <b>{ this.props.name }</b>  and I am <b> { this.props.age } </b> years old</p>
                 <p>My hobbies are { this.props.children ? this.props.children : 'Nothing' }</p>
                 <input type="text" onChange={this.props.changed} value={ this.props.name }/>
-            </div>
+                <hr/>
+            </ReactAux>
         );
     }
 }
