@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 const Cockpit = (props) => {
+
+    useEffect(() => {
+        console.log('Cockpit.js : useEffects');
+        // Http Request ...
+    });
+
     // whatever style written here inside is scoped to the component, it is NOT GLOBAL.
     // restriction are there, like you can not add :hover lie pseudo class
     const btnStyleGreen = {
