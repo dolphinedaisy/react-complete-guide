@@ -1,32 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 const Cockpit = (props) => {
-
-    console.log('***************** Rendering Cockpit.js *****************');
-
-    useEffect(() => {
-        console.log('Cockpit.js : useEffects');
-        // Http Request ...
-        const timer = setTimeout(() => {
-            alert('Saved Data to Cloud');
-        }, 2000);
-
-        // this will work similar - componentWillUnmount
-        // you can perform clean up here
-        return () => {
-            clearTimeout(timer);
-            console.log('Clean up of cockpit')
-        };
-
-    }, []);
-
-    // you can add multiple useEffect function
-    useEffect(() => {
-        console.log('Cockpit.js : useEffects ***** 2nd *****');
-        return () => {
-            console.log('Clean up of ***** 2nd ***** cockpit')
-        };
-    });
 
     const btnStyleGreen = {
         'color': '#fff',

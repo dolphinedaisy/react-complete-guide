@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Persons from "../Components/Persons/Persons";
 import Cockpit from "../Components/Cockpit/Cockpit";
-import WithClass from "../Components/hoc/WithClass";
+import withClass from "../hoc/withClass";
+import ReactAux from "../hoc/ReactAux";
 
 class App extends Component {
 
@@ -31,14 +32,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         console.log('App.js constructor');
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        console.log('----------------------------------------------');
-        console.log('App.js getDerivedStateFromProps');
-        console.log('props: ', props);
-        console.log('----------------------------------------------');
-        return state;
     }
 
     togglePersonListHandler = () => {
@@ -96,31 +89,14 @@ class App extends Component {
         }
 
         return (
-            <WithClass classes={'App'}>
+            <ReactAux classes={'App'}>
                 <button className={'btn btn-danger my-3'}
                         onClick={this.removeCockpitHandler}>Remove Cockpit</button>
                 { cockpit }
                 { persons }
-            </WithClass>
+            </ReactAux>
         );
-    }
-
-    componentDidMount() {
-        console.log('App.js componentDidMount');
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('----------------------------------------------');
-        console.log('App.js componentDidUpdate');
-        console.log('----------------------------------------------');
-    }
-
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log('----------------------------------------------');
-        console.log('App.js shouldComponentUpdate');
-        console.log('----------------------------------------------');
-        return true;
     }
 }
 
-export default App;
+export default withClass(App, 'text-center');
