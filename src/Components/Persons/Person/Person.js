@@ -2,6 +2,7 @@ import React from 'react';
 import './Person.css';
 // ES6 equivalent of normal function declaration
 const person = (props) => {
+    console.log('Person.js render()')
     // single braces says that this part should be executed as javascript and not as normal text.
     // return <p>I am a person. I am 2020 - 1994 years old</p>
     return (

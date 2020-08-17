@@ -26,6 +26,17 @@ class App extends Component {
         showPersons: false,
     }
 
+    constructor(props) {
+        super(props);
+        console.log('App.js constructor');
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log('App.js getDerivedStateFromProps');
+        console.log('props: ', props);
+        return state;
+    }
+
     togglePersonListHandler = () => {
         // const fuckYou = this.state.showPersons;
         this.setState({ showPersons: !(this.state.showPersons) });
@@ -60,7 +71,7 @@ class App extends Component {
     }
 
     render() {
-
+        console.log('App.js render()');
         let persons = null;
 
         if(this.state.showPersons) {
@@ -75,6 +86,14 @@ class App extends Component {
                 { persons }
             </div>
         );
+    }
+
+    componentDidMount() {
+        console.log('App.js componentDidMount');
+    }
+
+    componentWillMount() {
+        console.log('App.js componentWillMount');
     }
 }
 
