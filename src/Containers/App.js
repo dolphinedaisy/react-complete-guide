@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from "../Components/Persons/Person/Person";
+import Persons from "../Components/Persons/Persons";
+import Cockpit from "../Components/Cockpit/Cockpit";
 
 class App extends Component {
 
@@ -30,14 +31,14 @@ class App extends Component {
         this.setState({ showPersons: !(this.state.showPersons) });
     }
 
-    deletePersonHandler = (index) => {
+    deletePersonHandler = (event, index) => {
+        console.log('event : ', event.target);
         const persons = [...this.state.persons];
         persons.splice(index, 1);
         this.setState({persons: persons});
     }
 
     nameChangedHandler = (event, id) => {
-        debugger
         const personIndex = this.state.persons.findIndex((p) => {
             return p.id === id;
         });
@@ -63,39 +64,15 @@ class App extends Component {
         let persons = null;
 
         if(this.state.showPersons) {
-            persons = (
-                <div>
-                    {
-                        this.state.persons.map((person, index) => {
-                            return <Person key={person.id}
-                                           click={this.deletePersonHandler.bind(this, person.id)}
-                                           changed={(event) => this.nameChangedHandler(event, person.id)}
-                                           name={person.name}
-                                           age={person.age}/>
-                        })
-                    }
-                </div>
-            );
-        }
-
-        // whatever style written here inside is scoped to the component, it is NOT GLOBAL.
-        // restriction are there, like you can not add :hover lie pseudo class
-        const btnStyleGreen = {
-            'color': '#fff',
-            'backgroundColor': '#28a745',
-            'borderColor': '#28a745',
+            persons = <Persons persons={this.state.persons}
+                               clicked={this.deletePersonHandler}
+                               changed={this.nameChangedHandler}/>
         }
 
         return (
             <div className="App">
-                <h1>Hi, I am REACT App</h1>
-                <p>This is actually working !!</p>
-
-                <button style={ btnStyleGreen } className="btn mb-3"
-                        onClick={() => this.togglePersonListHandler()}>Toggle</button>
-
+                <Cockpit clicked={() => this.togglePersonListHandler()}></Cockpit>
                 { persons }
-
             </div>
         );
     }
