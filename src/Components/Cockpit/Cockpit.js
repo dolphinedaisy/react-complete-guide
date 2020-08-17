@@ -10,7 +10,7 @@ const Cockpit = (props) => {
     }
     return (
         <div>
-            <h1>Hi, I am REACT App</h1>
+            <h1>{props.title}</h1>
             <p>This is actually working !!</p>
             <button style={ btnStyleGreen } className="btn mb-3"
                     onClick={props.clicked}>Toggle</button>

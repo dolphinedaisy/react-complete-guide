@@ -71,7 +71,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <Cockpit clicked={() => this.togglePersonListHandler()}></Cockpit>
+                <Cockpit title={this.props.appTitle} clicked={() => this.togglePersonListHandler()}></Cockpit>
                 { persons }
             </div>
         );
