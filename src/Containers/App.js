@@ -96,7 +96,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <button className={'btn btn-danger'}
+                <button className={'btn btn-danger my-3'}
                         onClick={this.removeCockpitHandler}>Remove Cockpit</button>
                 { cockpit }
                 { persons }
