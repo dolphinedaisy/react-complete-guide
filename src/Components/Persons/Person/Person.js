@@ -3,6 +3,10 @@ import './Person.css';
 // ES6 equivalent of normal function declaration
 class Person extends Component {
 
+    componentWillUnmount() {
+        console.log('Person.js componentWillUnmount');
+    }
+
     render() {
         console.log('Person.js render()')
         // single braces says that this part should be executed as javascript and not as normal text.

@@ -24,6 +24,7 @@ class App extends Component {
             }
         ],
         showPersons: false,
+        showCockpit: true,
     }
 
     constructor(props) {
@@ -72,9 +73,14 @@ class App extends Component {
 
     }
 
+    removeCockpitHandler = () => {
+        this.setState({showCockpit: !(this.state.showCockpit)});
+    }
+
     render() {
         console.log('App.js render()');
         let persons = null;
+        let cockpit = null;
 
         if(this.state.showPersons) {
             persons = <Persons persons={this.state.persons}
@@ -82,9 +88,17 @@ class App extends Component {
                                changed={this.nameChangedHandler}/>
         }
 
+        if(this.state.showCockpit) {
+            cockpit = <Cockpit persons={this.state.persons}
+                               title={this.props.appTitle}
+                               clicked={() => this.togglePersonListHandler()} />
+        }
+
         return (
             <div className="App">
-                <Cockpit persons={this.state.persons} title={this.props.appTitle} clicked={() => this.togglePersonListHandler()}></Cockpit>
+                <button className={'btn btn-danger'}
+                        onClick={this.removeCockpitHandler}>Remove Cockpit</button>
+                { cockpit }
                 { persons }
             </div>
         );
@@ -106,10 +120,6 @@ class App extends Component {
         console.log('----------------------------------------------');
         return true;
     }
-
-    // componentWillMount() {
-    //     console.log('App.js componentWillMount');
-    // }
 }
 
 export default App;
