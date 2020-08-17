@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 
 const Cockpit = (props) => {
 
+    console.log('***************** Rendering Cockpit.js *****************');
+
     useEffect(() => {
         console.log('Cockpit.js : useEffects');
         // Http Request ...
@@ -31,14 +33,23 @@ const Cockpit = (props) => {
         'backgroundColor': '#28a745',
         'borderColor': '#28a745',
     }
+
+    let alertLabel = null;
+
+    if(props.personsLength <= 2) {
+        alertLabel = <p>Less persons are there !!</p>
+    }
+
     return (
         <div>
             <h1>{props.title}</h1>
             <p>This is actually working !!</p>
             <button style={ btnStyleGreen } className="btn mb-3"
                     onClick={props.clicked}>Toggle</button>
+            {alertLabel}
         </div>
     );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
+// export default Cockpit;
