@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Persons from "../Components/Persons/Persons";
 import Cockpit from "../Components/Cockpit/Cockpit";
+import WithClass from "../Components/hoc/WithClass";
 
 class App extends Component {
 
@@ -95,12 +96,12 @@ class App extends Component {
         }
 
         return (
-            <div className="App">
+            <WithClass classes={'App'}>
                 <button className={'btn btn-danger my-3'}
                         onClick={this.removeCockpitHandler}>Remove Cockpit</button>
                 { cockpit }
                 { persons }
-            </div>
+            </WithClass>
         );
     }
 
