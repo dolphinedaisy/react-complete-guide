@@ -32,8 +32,10 @@ class App extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
+        console.log('----------------------------------------------');
         console.log('App.js getDerivedStateFromProps');
         console.log('props: ', props);
+        console.log('----------------------------------------------');
         return state;
     }
 
@@ -92,9 +94,9 @@ class App extends Component {
         console.log('App.js componentDidMount');
     }
 
-    componentWillMount() {
-        console.log('App.js componentWillMount');
-    }
+    // componentWillMount() {
+    //     console.log('App.js componentWillMount');
+    // }
 }
 
 export default App;
