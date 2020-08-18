@@ -1,6 +1,13 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 const Cockpit = (props) => {
+
+    const toggleBtnRef = useRef(null);
+
+    useEffect(() => {
+        console.log('****** calling click ******');
+        toggleBtnRef.current.click();
+    }, []);
 
     const btnStyleGreen = {
         'color': '#fff',
@@ -18,7 +25,9 @@ const Cockpit = (props) => {
         <div>
             <h1>{props.title}</h1>
             <p>This is actually working !!</p>
-            <button style={ btnStyleGreen } className="btn mb-3"
+            <button style={ btnStyleGreen }
+                    className="btn mb-3"
+                    ref={toggleBtnRef}
                     onClick={props.clicked}>Toggle</button>
             {alertLabel}
         </div>

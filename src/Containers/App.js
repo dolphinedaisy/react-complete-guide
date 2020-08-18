@@ -36,6 +36,7 @@ class App extends Component {
     }
 
     togglePersonListHandler = () => {
+        console.log('******  toggling ****** ');
         // const fuckYou = this.state.showPersons;
         this.setState({ showPersons: !(this.state.showPersons) });
     }
