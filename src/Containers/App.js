@@ -27,6 +27,7 @@ class App extends Component {
         ],
         showPersons: false,
         showCockpit: true,
+        changeCounter: 0,
     }
 
     constructor(props) {
@@ -63,7 +64,19 @@ class App extends Component {
         const persons = [...this.state.persons];
         persons[personIndex] = person;
 
-        this.setState({persons: persons});
+        // the state is immediately not changed, when you call the setState
+        // this type of state setting is okay when new state do not depends on prev state
+        // this.setState({persons: persons, changeCounter: this.state.changeCounter + 1});
+        // there can be scenario when you need to update the state based on the prev state
+        // in that case pass function to setState, in this way of setting state react guarantees to update the state based on the prev state
+        this.setState((prevState, prop) => {
+            console.log('prevState.changeCounter : ', prevState.changeCounter);
+            return {
+                persons: persons,
+                changeCounter: prevState.changeCounter + 1
+            }
+        });
+        console.log('check here : ',this.state.changeCounter);
 
     }
 
