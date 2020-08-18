@@ -1,8 +1,10 @@
-import React, {useEffect, useRef} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import AuthContext from "../../Context/auth-context";
 
 const Cockpit = (props) => {
 
+    const authContext = useContext(AuthContext);
+    console.log('authContext: ', authContext.authenticated);
     const toggleBtnRef = useRef(null);
 
     useEffect(() => {
@@ -26,13 +28,15 @@ const Cockpit = (props) => {
         <div>
             <h1>{props.title}</h1>
             <p>This is actually working !!</p>
-            <AuthContext.Consumer>
-                {(context) => {
-                    return  <button onClick={context.login}
-                                    className={'mx-auto my-3 btn btn-secondary'}>Login</button>
+            {/*<AuthContext.Consumer>*/}
+            {/*    {(context) => {*/}
+            {/*        return  <button onClick={context.login}*/}
+            {/*                        className={'mx-auto my-3 btn btn-secondary'}>Login</button>*/}
 
-                }}
-            </AuthContext.Consumer>
+            {/*    }}*/}
+            {/*</AuthContext.Consumer>*/}
+            <button onClick={authContext.login}
+                    className={'mx-auto my-3 btn btn-secondary'}>Login</button>
             <br/>
             <button style={btnStyleGreen}
                     className="btn mb-3"
