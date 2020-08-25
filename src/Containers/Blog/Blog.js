@@ -8,7 +8,8 @@ import axios from "axios";
 class Blog extends Component {
 
     state = {
-        posts: []
+        posts: [],
+        selectedPost: null
     };
 
     componentDidMount() {
@@ -25,9 +26,16 @@ class Blog extends Component {
             });
     }
 
+    postClickHandler = (post) => {
+        this.setState({selectedPost: post});
+    }
+
     render () {
         let posts = this.state.posts.map((post, i) => {
-            return <Post key={post.id} author={post.author} title={post.title.substring(1, 4)} />;
+            return <Post key={post.id}
+                         author={post.author}
+                         clicked={() => this.postClickHandler(post)}
+                         title={post.title.substring(1, 4)} />;
         });
 
         return (
@@ -36,7 +44,7 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost post={this.state.selectedPost} />
                 </section>
                 <section>
                     <NewPost />
