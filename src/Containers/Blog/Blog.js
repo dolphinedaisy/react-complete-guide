@@ -9,7 +9,7 @@ class Blog extends Component {
 
     state = {
         posts: [],
-        selectedPost: null
+        selectedPostId: null
     };
 
     componentDidMount() {
@@ -27,7 +27,8 @@ class Blog extends Component {
     }
 
     postClickHandler = (post) => {
-        this.setState({selectedPost: post});
+        // of course I have post here, but just practising making Http Request using vanilla.js
+        this.setState({selectedPostId: post.id});
     }
 
     render () {
@@ -44,7 +45,7 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
-                    <FullPost post={this.state.selectedPost} />
+                    <FullPost postId={this.state.selectedPostId} />
                 </section>
                 <section>
                     <NewPost />
