@@ -9,7 +9,8 @@ class Blog extends Component {
 
     state = {
         posts: [],
-        selectedPostId: null
+        selectedPostId: null,
+        isError: false,
     };
 
     componentDidMount() {
@@ -23,6 +24,9 @@ class Blog extends Component {
                     };
                 })
                 this.setState({posts: updatedPosts});
+            })
+            .catch((err) => {
+                this.setState({isError: true});
             });
     }
 
@@ -32,12 +36,17 @@ class Blog extends Component {
     }
 
     render () {
-        let posts = this.state.posts.map((post, i) => {
-            return <Post key={post.id}
-                         author={post.author}
-                         clicked={() => this.postClickHandler(post)}
-                         title={post.title.substring(1, 4)} />;
-        });
+        let posts = null;
+        if(this.state.isError) {
+            posts = <div className="p-3 my-2 bg-danger text-white">Some Error Occured</div>
+        } else {
+            posts = this.state.posts.map((post, i) => {
+                return <Post key={post.id}
+                             author={post.author}
+                             clicked={() => this.postClickHandler(post)}
+                             title={post.title.substring(1, 4)} />;
+            });
+        }
 
         return (
             <div>
