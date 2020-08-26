@@ -3,7 +3,8 @@ import classes from './Blog.module.css';
 import Post from "../../Components/Post/Post";
 import FullPost from "../../Components/FullPost/FullPost";
 import NewPost from "../../Components/NewPost/NewPost";
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "../../axios";
 
 class Blog extends Component {
 
@@ -14,7 +15,7 @@ class Blog extends Component {
     };
 
     componentDidMount() {
-        axios.get('/posts')
+        axiosInstance.get('/posts')
             .then((response) => {
                 const posts = response.data.slice(0,3);
                 const updatedPosts = posts.map(rd => {
