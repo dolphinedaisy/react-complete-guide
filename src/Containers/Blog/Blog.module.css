@@ -1,7 +1,28 @@
-.Posts {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    width: 80%;
-    margin: auto;
+
+.Blogs {
+
+}
+
+.Blogs Header {
+    border-bottom: 1px solid darkslateblue;
+}
+
+.Blogs ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Blogs li {
+    display: inline-block;
+    margin: 20px;
+}
+
+.Blogs li a {
+    text-decoration: none;
+    color: black;
+}
+
+.Blogs li a:hover, .Blogs li a:active {
+    color: #fa923f;
 }
